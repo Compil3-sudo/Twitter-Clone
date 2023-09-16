@@ -2,7 +2,7 @@ import { useSession } from "next-auth/react";
 import Button from "./Button";
 import ProfileImage from "./ProfileImage";
 import {
-  FormEvent,
+  type FormEvent,
   useCallback,
   useLayoutEffect,
   useRef,

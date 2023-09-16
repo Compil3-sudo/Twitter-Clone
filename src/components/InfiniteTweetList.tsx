@@ -13,7 +13,7 @@ type InfiniteTweetListProps = {
   tweets?: Tweet[];
   isLoading: boolean;
   isError: boolean;
-  hasMore: boolean;
+  hasMore: boolean | undefined;
   fetchNewTweets: () => Promise<unknown>;
 };
 
@@ -21,7 +21,7 @@ const InfiniteTweetList = ({
   tweets,
   isLoading,
   isError,
-  hasMore,
+  hasMore = false,
   fetchNewTweets,
 }: InfiniteTweetListProps) => {
   if (isLoading) {
