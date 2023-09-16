@@ -1,6 +1,7 @@
 import InfiniteScroll from "react-infinite-scroll-component";
+import TweetCard from "./TweetCard";
 
-type Tweet = {
+export type Tweet = {
   id: string;
   content: string;
   createdAt: Date;
@@ -46,7 +47,7 @@ const InfiniteTweetList = ({
         loader={"Loading..."}
       >
         {tweets.map((tweet) => {
-          return <div key={tweet.id}>{tweet.content}</div>;
+          return <TweetCard key={tweet.id} {...tweet} />;
         })}
       </InfiniteScroll>
     </ul>
