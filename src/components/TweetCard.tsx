@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Tweet } from "./InfiniteTweetList";
 import ProfileImage from "./ProfileImage";
 import HeartButton from "./HeartButton";
+import { api } from "~/utils/api";
 
 const dateTimeFormatter = new Intl.DateTimeFormat(undefined, {
   dateStyle: "short",
@@ -15,6 +16,12 @@ const TweetCard = ({
   likeCount,
   likedByMe,
 }: Tweet) => {
+  const toggleLike = api.tweet.toggleLike.useMutation();
+
+  const handleToggleLike = () => {
+    toggleLike.mutate({ id });
+  };
+
   return (
     <li className="flex gap-4 border-b px-4 py-4">
       <Link href={`/profiles/${user.id}`}>
@@ -34,7 +41,12 @@ const TweetCard = ({
           </span>
         </div>
         <p className="whitespace-pre-wrap">{content}</p>
-        <HeartButton likedByMe={likedByMe} likeCount={likeCount} />
+        <HeartButton
+          onClick={handleToggleLike}
+          isLoading={toggleLike.isLoading}
+          likedByMe={likedByMe}
+          likeCount={likeCount}
+        />
       </div>
     </li>
   );
