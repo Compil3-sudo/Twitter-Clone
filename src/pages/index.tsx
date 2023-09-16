@@ -7,6 +7,13 @@ export default function Home() {
         <h1 className="mb-2 px-4 text-lg font-bold">Home</h1>
       </header>
       <NewTweetForm />
+      <RecentTweets />
     </>
   );
+}
+
+function RecentTweets() {
+  const tweets = [];
+
+  return <InfiniteTweetList tweets={tweets} />;
 }
