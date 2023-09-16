@@ -1,3 +1,4 @@
+import InfiniteTweetList from "~/components/InfiniteTweetList";
 import NewTweetForm from "~/components/NewTweetForm";
 
 export default function Home() {
