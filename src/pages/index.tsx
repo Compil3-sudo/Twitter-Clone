@@ -22,7 +22,7 @@ function RecentTweets() {
 
   return (
     <InfiniteTweetList
-      tweets={tweets.data?.pages.flatMap((page) => page.mappedTweetsFeed)}
+      tweets={tweets.data?.pages.flatMap((page) => page.tweets)}
       isError={tweets.isError}
       isLoading={tweets.isLoading}
       hasMore={tweets.hasNextPage}

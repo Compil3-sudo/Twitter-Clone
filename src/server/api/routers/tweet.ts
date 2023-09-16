@@ -48,7 +48,7 @@ export const tweetRouter = createTRPCRouter({
         }
       }
 
-      const mappedTweetsFeed = tweetsFeed.map((tweet) => {
+      const tweets = tweetsFeed.map((tweet) => {
         return {
           id: tweet.id,
           content: tweet.content,
@@ -59,7 +59,7 @@ export const tweetRouter = createTRPCRouter({
         };
       });
 
-      return { mappedTweetsFeed, nextCursor };
+      return { tweets, nextCursor };
     }),
   create: protectedProcedure
     .input(z.object({ content: z.string() }))
