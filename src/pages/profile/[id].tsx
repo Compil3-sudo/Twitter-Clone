@@ -22,10 +22,10 @@ const ProfilePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   id,
 }) => {
   const { data: profile } = api.profile.getById.useQuery({ id });
-  // const tweets = api.tweet.infiniteProfileFeed.useInfiniteQuery(
-  //   { userId: id },
-  //   { getNextPageParam: (lastPage) => lastPage.nextCursor },
-  // );
+  const tweets = api.tweet.infiniteProfileFeed.useInfiniteQuery(
+    { userId: id },
+    { getNextPageParam: (lastPage) => lastPage.nextCursor },
+  );
 
   if (profile == null) {
     return <ErrorPage statusCode={404} />;
@@ -36,8 +36,7 @@ const ProfilePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
       <Head>
         <title>{`Twitter Clone - ${profile.name}`}</title>
       </Head>
-      {profile.name}
-      {/* <header className="sticky top-0 z-10 flex items-center border-b bg-white px-4 py-2">
+      <header className="sticky top-0 z-10 flex items-center border-b bg-white px-4 py-2">
         <Link href=".." className="mr-2">
           <IconHoverEffect>
             <VscArrowLeft className="h-6 w-6" />
@@ -59,8 +58,8 @@ const ProfilePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
           userId={id}
           onClick={() => null}
         />
-      </header> */}
-      {/* <main>
+      </header>
+      <main>
         <InfiniteTweetList
           tweets={tweets.data?.pages.flatMap((page) => page.tweets)}
           isError={tweets.isError}
@@ -68,7 +67,7 @@ const ProfilePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
           hasMore={tweets.hasNextPage}
           fetchNewTweets={tweets.fetchNextPage}
         />
-      </main> */}
+      </main>
     </>
   );
 };
