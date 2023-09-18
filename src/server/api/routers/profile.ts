@@ -63,6 +63,12 @@ export const profileRouter = createTRPCRouter({
       }
 
       // Revalidation - update SSG profile page
+      // don't need await
+      // void => don't wait for this to finish
+      // when someone if followed:
+      // revalidate both the followed and the following
+      void ctx.revalidateSSG?.(`/profile/${userId}`); // being followed
+      void ctx.revalidateSSG?.(`/profile/${currentUserId}`); // following
 
       return { addedFollow };
     }),
