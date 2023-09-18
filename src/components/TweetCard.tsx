@@ -66,13 +66,13 @@ const TweetCard = ({
 
   return (
     <li className="flex gap-4 border-b px-4 py-4">
-      <Link href={`/profiles/${user.id}`}>
+      <Link href={`/profile/${user.id}`}>
         <ProfileImage src={user.image} />
       </Link>
       <div className="flex flex-grow flex-col">
         <div className="flex gap-1">
           <Link
-            href={`/profiles/${user.id}`}
+            href={`/profile/${user.id}`}
             className="font-bold outline-none hover:underline focus-visible:underline"
           >
             {user.name}
